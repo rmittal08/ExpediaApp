@@ -5,11 +5,12 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script type="text/javascript">
-	function searchResult() {
+	function searchResult(path) {
 		selectCity = $("#selectedCity").val();
 		selectClass = $("#selectClass").val();
 		checkInDate = $("#checkInDate").val();
 		checkOutDate = $("#checkOutDate").val();
+		alert(path);
 		if(checkInDate==""){
 			checkInDate="NONE"
 		}else{
@@ -21,7 +22,7 @@
 			checkOutDate = checkOutDate.replace(/\//g, "%2f");
 		}
 		$("#resultId").load(
-				"/ExpediaApp/findHotels?city=" + selectCity + "&star="
+				path+"/findHotels?city=" + selectCity + "&star="
 						+ selectClass + "&checkInDate="
 						+ checkInDate + "&checkOutDate="
 						+ checkOutDate);
@@ -61,7 +62,7 @@
 		<tr>
 			<td></td>
 			<td><input type="button" value="Search"
-				onclick="searchResult();" /></td>
+				onclick="searchResult('<%=request.getContextPath()%>');" /></td>
 		</tr>
 	</table>
 	<div id="resultId"></div>
