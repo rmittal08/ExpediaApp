@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.test.app</groupId>
 	<artifactId>ExpediaApp</artifactId>
-	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>ExpediaApp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -111,9 +110,8 @@
 	<build>
 		<finalName>ExpediaApp</finalName>
 	
-<plugins>
-    
-      <plugin>
+ <plugins>
+        <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>appassembler-maven-plugin</artifactId>
             <version>1.1.1</version>
@@ -121,7 +119,7 @@
                 <assembleDirectory>target</assembleDirectory>
                 <programs>
                     <program>
-                        <mainClass>main.java.launch.Main</mainClass>
+                        <mainClass>launch.Main</mainClass>
                         <name>webapp</name>
                     </program>
                 </programs>
