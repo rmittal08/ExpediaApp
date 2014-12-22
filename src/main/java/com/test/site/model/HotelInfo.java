@@ -611,9 +611,9 @@ public class HotelInfo implements Comparable<HotelInfo> {
 	
 	public int compareTo(HotelInfo o) {
 		if(this.totalMeanScore>o.totalMeanScore)
-			return 1;
-		else if(this.totalMeanScore<o.totalMeanScore)
 			return -1;
+		else if(this.totalMeanScore<o.totalMeanScore)
+			return 1;
 		return 0;
 	}
 	/**
