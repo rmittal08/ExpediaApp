@@ -1,1 +1,1 @@
-web: sh target/ExpediaApp/WEB-INF
+web: sh target/bin/webapp
