@@ -5,12 +5,13 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script type="text/javascript">
-	function searchResult(path) {
+	function searchResult(reqURL) {
 		selectCity = $("#selectedCity").val();
 		selectClass = $("#selectClass").val();
 		checkInDate = $("#checkInDate").val();
 		checkOutDate = $("#checkOutDate").val();
-		alert(path);
+		reqURL = reqURL.substring(0,reqURL.indexOf("WEB-INF"))
+
 		if(checkInDate==""){
 			checkInDate="NONE"
 		}else{
@@ -21,8 +22,7 @@
 		}else{
 			checkOutDate = checkOutDate.replace(/\//g, "%2f");
 		}
-		$("#resultId").load(
-				path+"/findHotels?city=" + selectCity + "&star="
+		$("#resultId").load(reqURL+"findHotels?city=" + selectCity + "&star="
 						+ selectClass + "&checkInDate="
 						+ checkInDate + "&checkOutDate="
 						+ checkOutDate);
@@ -62,7 +62,7 @@
 		<tr>
 			<td></td>
 			<td><input type="button" value="Search"
-				onclick="searchResult('<%=request.getContextPath()%>');" /></td>
+				onclick="searchResult('<%=request.getRequestURL().toString()%>');" /></td>
 		</tr>
 	</table>
 	<div id="resultId"></div>
