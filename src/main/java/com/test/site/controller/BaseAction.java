@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +50,7 @@ public class BaseAction {
 	}
  
 	@RequestMapping(value = "/{findHotels}",params = {"city", "star", "checkInDate", "checkOutDate"}, method = RequestMethod.GET)
-	public String welcomeName(@RequestParam String city,@RequestParam String star,@RequestParam String checkInDate,@RequestParam String checkOutDate, ModelMap model) {
+	public String welcomeName(@RequestParam String city,@RequestParam String star,@RequestParam String checkInDate,@RequestParam String checkOutDate, ModelMap model, HttpServletResponse response) {
 		try {
 			logger.info("City: "+city);
 			logger.info("Star: "+star);
@@ -58,6 +60,7 @@ public class BaseAction {
 			
 			//Sort data in the order of totalMeanScore which is average of all ratings and scores
 			Collections.sort(list);
+			response.addHeader("Access-Control-Allow-Origin", "*");
 			model.addAttribute("listOfHotel", list);
 		} catch (Exception exp){
 			exp.printStackTrace();
